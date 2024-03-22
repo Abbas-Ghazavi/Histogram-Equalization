@@ -2,14 +2,14 @@ import cv2 as cv
 import numpy as np
 import matplotlib.pyplot as plt
 
-#_________________________________________________________________________________________________________
-im = cv.imread("a.jpg",0)
-im_A = cv.resize(im,(600,600))
-im_B = im_A.copy()
-row , col = im_B.shape
+im = cv.imread("a.jpg", 0)
 
-data_ax = im_B.ravel().tolist()    #tabil be list yek bodi
-shedat_i = list(set(data_ax))      #hazfe anasor tekrari(az har onsor yek nemuneh) va moratab sazi soudi
+im_A = cv.resize(im, (600, 600))
+im_B = im_A.copy()
+
+row, col = im_B.shape
+data_ax = im_B.ravel().tolist()
+shedat_i = list(set(data_ax))
 
 #_________________________________________________________________________________________________________
 #mohasebe meghdare faravani va tedad kol satr*sotoon va ehtemale kol va ehtemal i va natije
