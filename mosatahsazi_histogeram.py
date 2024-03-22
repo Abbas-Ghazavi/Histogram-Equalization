@@ -41,17 +41,22 @@ for i in range(row):
         andis = shedat_i.index(im_B[i][j])  
         im_B[i][j] = g_i_[andis]  #jaygozini meghdare har pixel ax asli ba meghdare moadele an dar list g(i)
 
-#im_C=cv.equalizeHist(im_A)
-#_________________________________________________________________________________________________________
-#namayesh
+fig, axes = plt.subplots(2, 2, figsize=(8, 8))
+axes[0, 0].imshow(im_A, cmap='gray')
+axes[0, 0].set_title('Image A')
 
-plt.subplot(311),plt.hist(im_A),plt.xlim(0, 255),plt.ylim(0, 330)
-plt.subplot(312),plt.hist(im_B),plt.xlim(0, 255),plt.ylim(0, 330)
-# plt.subplot(313),plt.hist(im_C),plt.xlim(0, 255),plt.ylim(0, 330)
 
-cv.imshow('A',im_A)
-cv.imshow('B',im_B)
-#cv.imshow('C',im_C)
+axes[1, 0].hist(im_A.ravel(), bins=256  )
+axes[1, 0].set_xlim(0, 255)
+axes[1, 0].set_ylim(0, 330)
+axes[1, 0].set_title('Histogram of Image A')
+axes[0, 1].imshow(im_B, cmap='gray')
+axes[0, 1].set_title('Image B')
 
+axes[1, 1].hist(im_B.ravel(), bins=256)
+axes[1, 1].set_xlim(0, 255)
+axes[1, 1].set_ylim(0, 330)
+axes[1, 1].set_title('Histogram of Image B')
+
+plt.tight_layout()
 plt.show()
-cv.waitKey()
