@@ -11,36 +11,24 @@ row, col = im_B.shape
 data_ax = im_B.ravel().tolist()
 shedat_i = list(set(data_ax))
 
-#_________________________________________________________________________________________________________
-#mohasebe meghdare faravani va tedad kol satr*sotoon va ehtemale kol va ehtemal i va natije
 p_i_ = []
 s_i_ = []
 g_i_ = []
-sum_f= 0
-n_s_ = row * col          #tedade pixelhaye matris(omghe bit 8=256)
+sum_f = 0
+n_s_ = row * col
 
-for i in shedat_i :
-    faravani = data_ax.count(i)            #shomaresh tedad tekrar meghdare har pixel dar matris
-    p_i_.append( faravani / n_s_ )       #taghsime faravani har pixel bar tedad kol pixelhaye matris jadid
-    sum_f += faravani                      #jame maghadir faravani har pixel
-    s_i_.append( sum_f / n_s_ )            #ekhtesase maghadire faravali har pixel i dar list
-    g_i_.append( round( s_i_[-1] * 255 ) ) #zarb meghdare s(i) dar omghe bit va round   
+for i in shedat_i:
+    faravani = data_ax.count(i)
+    p_i_.append(faravani / n_s_)
+    sum_f += faravani
+    s_i_.append(sum_f / n_s_)
+    g_i_.append(round(s_i_[-1] * 255))
 
-# print("data ax :  ",data_ax)
-# print("faravani: ",faravani)
-# print("shedate i :  ",shedat_i)
-# print("p(i) :  ",p_i_)
-# print("S(i) :  ",s_i_)
-# print("g(i) :  ",g_i_)
-
-#_________________________________________________________________________________________________________
-#jaygozari matris ax ba meghdare mohsebe shode jadid
 for i in range(row):
     for j in range(col):
-        #jostejoye meghdare har pixel ax asli dar liste shedate(i) va bargardandane andis an
-        andis = shedat_i.index(im_B[i][j])  
-        im_B[i][j] = g_i_[andis]  #jaygozini meghdare har pixel ax asli ba meghdare moadele an dar list g(i)
-
+        andis = shedat_i.index(im_B[i][j])
+        im_B[i][j] = g_i_[andis]
+        
 fig, axes = plt.subplots(2, 2, figsize=(8, 8))
 axes[0, 0].imshow(im_A, cmap='gray')
 axes[0, 0].set_title('Image A')
