@@ -46,5 +46,6 @@ axes[1, 1].set_xlim(0, 255)
 axes[1, 1].set_ylim(0, 330)
 axes[1, 1].set_title('Histogram of Image B')
 
+
 plt.tight_layout()
 plt.show()
